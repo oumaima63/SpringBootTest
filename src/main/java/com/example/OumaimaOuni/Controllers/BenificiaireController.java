@@ -4,12 +4,14 @@ import com.example.OumaimaOuni.Services.BenificiaireService;
 import com.example.OumaimaOuni.Services.UserService;
 import com.example.OumaimaOuni.entities.Assurance;
 import com.example.OumaimaOuni.entities.Benificiaire;
+import com.example.OumaimaOuni.entities.TypeContrat;
 import com.example.OumaimaOuni.entities.User;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @AllArgsConstructor
@@ -27,6 +29,11 @@ public class BenificiaireController {
     @GetMapping("/retrieve-all-benif")
     public List<Benificiaire> retrieveAllBenif() {
         return benificiaireService.retrieveAllBenef();
+    }
+
+    @GetMapping("/getBeneficairesAsType/{type}")
+    public Set<Benificiaire> getBeneficairesAsType(@PathVariable("type")TypeContrat type) {
+        return benificiaireService.getBeneficairesAsType(type);
     }
 
 

@@ -11,6 +11,6 @@ public interface AssuranceRepository extends JpaRepository<Assurance,Integer> {
 
    // public float getMontantBf (int cinBf);
 
-/*    @Query("SELECT ((a.montant)/12) FROM Assurance a join Benificiaire b WHERE b.idBenef = :idBf ")
-    public float getContratBf(@Param("idBf") int idBf);*/
+    @Query("select count(a) from Benificiaire b join b.assurances a group by (b.idBenef) order by count (a) DESC" )
+    public void statistiques ();
 }

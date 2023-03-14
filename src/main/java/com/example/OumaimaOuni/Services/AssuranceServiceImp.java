@@ -25,11 +25,15 @@ public class AssuranceServiceImp implements AssuranceService{
 
     @Override
     public int ajouterAssurance(Assurance a, int cinBf) {
-        Benificiaire benificiaire = benificiaireRepository.findById(cinBf).get();
-       // benificiaire.setAssurances(a);
+        Benificiaire benificiaire = benificiaireRepository.findBenificiaireByCin(cinBf);
         a.setBenificiaire(benificiaire);
         assuranceRepository.save(a);
         return a.getIdAssurance();
+    }
+
+    @Override
+    public void statistiques() {
+         assuranceRepository.statistiques();
     }
 
  /*   @Override

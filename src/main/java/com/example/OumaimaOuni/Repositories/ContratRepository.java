@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ContratRepository extends JpaRepository<Contrat,Integer> {
 
-    @Query("SELECT c FROM Contrat c join Assurance a join Benificiaire b WHERE b.idBenef = :idBf ORDER BY c.dateEffet ASC")
+    @Query("SELECT c FROM Benificiaire b join b.assurances a join a.contrat c WHERE b.idBenef = :idBf ORDER BY c.dateEffet ASC")
     public List<Contrat> getContratBf(@Param("idBf") int idBf);
 
 }

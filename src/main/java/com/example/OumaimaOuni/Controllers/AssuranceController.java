@@ -6,6 +6,7 @@ import com.example.OumaimaOuni.entities.Benificiaire;
 import com.example.OumaimaOuni.entities.User;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,6 +28,12 @@ public class AssuranceController {
     @PostMapping("/add-assurance/{cinBf}")
     public int ajouterAssurance(@RequestBody Assurance a, @PathVariable ("cinBf") int cinBf) {
         return assuranceService.ajouterAssurance(a,cinBf);
+    }
+
+    @Scheduled(cron = "*/60 * * * * *")
+    @GetMapping("/schedular")
+    public void statistiques() {
+         assuranceService.statistiques();
     }
 
    /* @GetMapping("/retrieve-montant/{idBf}")

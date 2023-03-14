@@ -10,6 +10,8 @@ public interface AssuranceService {
 
     public int ajouterAssurance(Assurance a, int cinBf);
 
+    public void statistiques();
+
 /*
     public float getMontantBf (int cinBf);
 */
