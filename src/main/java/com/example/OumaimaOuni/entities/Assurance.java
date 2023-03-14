@@ -29,6 +29,7 @@ public class Assurance {
     @ManyToOne(cascade = CascadeType.ALL)
     Contrat contrat;
 
+
     @ManyToOne
     Benificiaire benificiaire;
 }
